@@ -152,16 +152,47 @@ class KingBurger implements BurgerFactory{
         if(type.equalsIgnoreCase("basic")){
             return new BasicWheatBurger();
         }
-        else of()
-        return null;
+        else if(type.equalsIgnoreCase("standard")) {
+            return new StandardWheatBurger();
+        }
+        else if(type.equalsIgnoreCase("premium")) {
+            return new PremiumWheatBurger();
+        }
+        else {
+            System.out.println("We do not have this type of Burger");
+            return null;
+        }
     }
 
     @Override
     public GarlicBread createGarlicBread(String type) {
-        return null;
+        if(type.equalsIgnoreCase("basic")){
+            return new BasicWheatGarlicBread();
+        }
+        else if(type.equalsIgnoreCase("standard")) {
+            return new StandardWheatGarlicBread();
+        }
+        else if(type.equalsIgnoreCase("premium")) {
+            return new PremiumWheatGarlicBread();
+        }
+        else{
+            System.out.println("We do not have this type of Garlic bread");
+            return null;
+        }
     }
 }
 
 public class AbstractFactoryMethod {
+    public static void main(String[] args) {
+        String type = "basic";
 
+        BurgerFactory burger = new SinghBurger();
+
+        Burger burger1 = burger.createBurger(type);
+        burger1.prepare();
+
+        GarlicBread  garlicBread1 = burger.createGarlicBread(type);
+        garlicBread1.prepare();
+
+    }
 }
